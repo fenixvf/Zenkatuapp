@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'Zenkatu.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "Zenkatu.app"
+        minSdk 19
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        // TWA Configuration
+        manifestPlaceholders = [
+            hostName: "zenkatu.base44.app",
+            defaultUrl: "https://zenkatu.base44.app/",
+            launcherName: "Zenkatu ",
+            assetStatements: '[{ "relation": ["delegate_permission/common.handle_all_urls"], "target": { "namespace": "web", "site": "https://zenkatu.base44.app/" } }]',
+            themeColor: "#000000",
+            backgroundColor: "#000000"
+        ]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
+}
